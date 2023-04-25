@@ -6,11 +6,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.blsoft.TxtReadWrite;
-import br.com.blsoft.contador.Contador;
+import br.com.blsoft.contador.Counter;
 import br.com.blsoft.contador.CounterParser;
 import br.com.blsoft.contador.RicohIM430CounterParser;
 
-public class PrinterTxt implements PrinterRepository {
+public class PrinterRepositoryTxt implements PrinterRepository {
 
     @Override
     public List<Printer> getPrinters() {
@@ -21,7 +21,6 @@ public class PrinterTxt implements PrinterRepository {
             Printer printer = printerFromTxtLine(line);
             printers.add(printer);
         });
-        printers.forEach(printer -> printer.setContador(printCounter(printer.getIp(), printer.getCounterParser())));
         return printers;
     }
 
@@ -31,21 +30,12 @@ public class PrinterTxt implements PrinterRepository {
         return printer;
     }
 
-    public Contador printCounter(String ip, CounterParser counterParser) {
+    @Override
+    public Counter getPrinterCounter(String ip, CounterParser counterParser) throws ConnectException, IOException {
         String url = counterParser.getUrl(false, ip);
-        Contador contador;
-        try {
-            contador = counterParser.getContadorTotal(url);
-            return contador;
-        } catch (ConnectException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-
-        return null;
+        Counter contador;
+        contador = counterParser.getTotalCounters(url);
+        return contador;
     }
 
 }

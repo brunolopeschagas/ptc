@@ -13,6 +13,6 @@ import java.util.List;
  * @author bruno.chagas
  */
 public interface ContadorRepository {
-    public void salvar(Contador contador);
-    public List<Contador> recuperarPorPeriodo(LocalDate dataInicio, LocalDate dataFim);
+    public void salvar(Counter contador);
+    public List<Counter> recuperarPorPeriodo(LocalDate dataInicio, LocalDate dataFim);
 }

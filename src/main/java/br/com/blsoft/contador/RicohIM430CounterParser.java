@@ -16,10 +16,12 @@ import org.jsoup.select.Elements;
  * @author bruno.chagas
  */
 public class RicohIM430CounterParser implements CounterParser {
-    
+
+    private final String URL_IM430 = "/web/guest/pt/websys/status/getUnificationCounter.cgi";
+
     @Override
-    public Contador getContadorTotal(String pUrl) throws IOException, ConnectException {
-        Contador contador = new Contador();
+    public Counter getTotalCounters(String pUrl) throws IOException, ConnectException {
+        Counter contador = new Counter();
         Document doc = Jsoup.connect(pUrl).get();
         Elements trs = doc.select("tr");
         if (trs.size() > 0) {
@@ -35,7 +37,7 @@ public class RicohIM430CounterParser implements CounterParser {
                 if (tds.get(i).text().equals("Preto e branco")) {
                     if (countPretoEBrancos == 0) {
                         contador.setContCopiadora(Long.parseLong(tds.get(i + 2).text()));
-                    }else if (countPretoEBrancos == 1){
+                    } else if (countPretoEBrancos == 1) {
                         contador.setContImpressora(Long.parseLong(tds.get(i + 2).text()));
                     }
                     countPretoEBrancos++;
@@ -44,19 +46,20 @@ public class RicohIM430CounterParser implements CounterParser {
         }
         return contador;
     }
-    
-    public void getHistoricoTrabalhos(String purl)throws IOException {
+
+    public void getHistoricoTrabalhos(String purl) throws IOException {
         Document doc = Jsoup.connect(purl).get();
         System.out.println(doc);
     }
 
     @Override
-    public String getUrl(Boolean httpSecurity,  String printerIp) {
+    public String getUrl(Boolean httpSecurity, String printerIp) {
         String httpSecurityText = "http://";
-        if(httpSecurity){
+        if (httpSecurity) {
             httpSecurityText = "https://";
         }
-        return httpSecurityText+printerIp+"/web/guest/pt/websys/status/getUnificationCounter.cgi"; //To change body of generated methods, choose Tools | Templates.
+        return httpSecurityText + printerIp + URL_IM430; // To change body of generated methods, choose Tools |
+                                                         // Templates.
     }
 
 }

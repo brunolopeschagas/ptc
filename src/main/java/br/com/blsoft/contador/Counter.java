@@ -12,15 +12,15 @@ import java.time.LocalDate;
  *
  * @author bruno.chagas
  */
-public class Contador {
+public class Counter {
     private long contTotal;
     private long contCopiadora;
     private long contImpressora;
     private LocalDate dataRegistro;
 
-    public Contador(){}
+    public Counter(){}
     
-    public Contador(long contTotal, long contCopiadora, long contImpressora, LocalDate dataRegistro) {
+    public Counter(long contTotal, long contCopiadora, long contImpressora, LocalDate dataRegistro) {
         this.contTotal = contTotal;
         this.contCopiadora = contCopiadora;
         this.contImpressora = contImpressora;

@@ -14,7 +14,7 @@ public class RicohIM430CounterParserTest {
         String url = ricohIM430.getUrl(false,"10.14.186.212");
         try {
             float contadorExperado = 40392;//alterar esse valor para o contador real da impressora na data corrente
-            Contador contadores = ricohIM430.getContadorTotal(url);
+            Counter contadores = ricohIM430.getTotalCounters(url);
             assertEquals("Resultado ", contadorExperado, contadores.getContTotal(), 1);
         } catch (ConnectException e) {
             // TODO Auto-generated catch block

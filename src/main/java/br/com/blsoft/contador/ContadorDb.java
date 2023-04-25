@@ -16,15 +16,15 @@ import java.util.stream.Collectors;
  */
 public class ContadorDb implements ContadorRepository {
 
-    private List<Contador> contadores = this.simularContadores();
+    private List<Counter> contadores = this.simularContadores();
 
     @Override
-    public void salvar(Contador contador) {
+    public void salvar(Counter contador) {
         this.contadores.add(contador);
     }
 
     @Override
-    public List<Contador> recuperarPorPeriodo(LocalDate dataInicio, LocalDate dataFim) {
+    public List<Counter> recuperarPorPeriodo(LocalDate dataInicio, LocalDate dataFim) {
 //        List<Contador> contadoreEncontrados = new ArrayList<>();
 //        for (Contador contador : contadores) {
 //            if (contador.getDataRegistro().getMonthValue() >= dataInicio.getMonthValue()
@@ -32,7 +32,7 @@ public class ContadorDb implements ContadorRepository {
 //                contadoreEncontrados.add(contador);
 //            }
 //        }
-        List<Contador> contadoreEncontrados = 
+        List<Counter> contadoreEncontrados = 
                 contadores.stream().filter(
                         contador -> contador.getDataRegistro().isAfter(dataInicio)
                 )
@@ -47,17 +47,17 @@ public class ContadorDb implements ContadorRepository {
         return contadoreEncontrados;
     }
 
-    private List<Contador> simularContadores() {
-        List<Contador> contadores = new ArrayList<>();
-        Contador c = new Contador(100, 50, 50, LocalDate.of(2020, 8, 20));
+    private List<Counter> simularContadores() {
+        List<Counter> contadores = new ArrayList<>();
+        Counter c = new Counter(100, 50, 50, LocalDate.of(2020, 8, 20));
         contadores.add(c);
-        c = new Contador(150, 50, 50, LocalDate.of(2020, 9, 20));
+        c = new Counter(150, 50, 50, LocalDate.of(2020, 9, 20));
         contadores.add(c);
-        c = new Contador(150, 50, 50, LocalDate.of(2020, 10, 20));
+        c = new Counter(150, 50, 50, LocalDate.of(2020, 10, 20));
         contadores.add(c);
-        c = new Contador(150, 50, 50, LocalDate.of(2020, 9, 19));
+        c = new Counter(150, 50, 50, LocalDate.of(2020, 9, 19));
         contadores.add(c);
-        c = new Contador(150, 50, 50, LocalDate.of(2020, 9, 5));
+        c = new Counter(150, 50, 50, LocalDate.of(2020, 9, 5));
         contadores.add(c);
         return contadores;
     }

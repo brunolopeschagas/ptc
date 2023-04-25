@@ -13,6 +13,6 @@ import java.net.ConnectException;
  * @author bruno.chagas
  */
 public interface CounterParser {
-    public Contador getContadorTotal(String urlFormatada) throws IOException, ConnectException ;
+    public Counter getTotalCounters(String urlFormatada) throws IOException, ConnectException ;
     public String getUrl(Boolean httpSecurity,  String printerIp);
 }
