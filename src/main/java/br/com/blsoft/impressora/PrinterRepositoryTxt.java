@@ -8,7 +8,7 @@ import java.util.List;
 import br.com.blsoft.TxtReadWrite;
 import br.com.blsoft.contador.Counter;
 import br.com.blsoft.contador.CounterParser;
-import br.com.blsoft.contador.RicohIM430CounterParser;
+import br.com.blsoft.contador.CounterParserFactory;
 
 public class PrinterRepositoryTxt implements PrinterRepository {
 
@@ -26,7 +26,7 @@ public class PrinterRepositoryTxt implements PrinterRepository {
 
     private Printer printerFromTxtLine(String line) {
         String[] lineSplit = line.split(",");
-        Printer printer = new Printer(lineSplit[0], lineSplit[1], lineSplit[2], new RicohIM430CounterParser());
+        Printer printer = new Printer(lineSplit[0], lineSplit[1], lineSplit[2], CounterParserFactory.getCounterParser(lineSplit[2]));
         return printer;
     }
 
