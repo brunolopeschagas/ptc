@@ -2,6 +2,7 @@ package br.com.blsoft.impressora;
 
 import br.com.blsoft.contador.Counter;
 import br.com.blsoft.contador.CounterParser;
+import br.com.blsoft.estadoEquipamento.PrinterStateParser;
 
 public class Printer {
     private String name;
@@ -9,12 +10,21 @@ public class Printer {
     private String model;
     private Counter contador;
     private CounterParser counterParser;
+    private PrinterStateParser printerStateParser;
 
     public Printer(String name, String ip, String model, CounterParser counterParser) {
         this.name = name;
         this.ip = ip;
         this.model = model;
         this.counterParser = counterParser;
+    }
+
+    public Printer(String name, String ip, String model, CounterParser counterParser, PrinterStateParser printerStateParser) {
+        this.name = name;
+        this.ip = ip;
+        this.model = model;
+        this.counterParser = counterParser;
+        this.printerStateParser = printerStateParser;
     }
 
     public String getName() {
@@ -27,6 +37,10 @@ public class Printer {
 
     public CounterParser getCounterParser() {
         return this.counterParser;
+    }
+
+    public PrinterStateParser getStateParser(){
+        return this.printerStateParser;
     }
 
     public Counter getContador() {

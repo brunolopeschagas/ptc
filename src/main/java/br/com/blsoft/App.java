@@ -19,9 +19,7 @@ public class App {
                 public void run() {
                     try {
                         System.out.println("CONECTANDO À " + printer.getName() + "...");
-                        Counter counter = printerController.getPrinterCounter(printer);
-                        printer.setCounter(counter);
-                        System.out.println("\n" + printer);
+                        getCounters(printerController, printer);
                     } catch (ConnectException e) {
                         System.out.println("NAO FOI POSSÍVEL CONECTAR A IMPRESSORA " + printer.getName());
                         // e.printStackTrace();
@@ -29,6 +27,17 @@ public class App {
                         System.out.println("ERRRO AO RECUPERAR OS CONTADORES DA IMPRESSORA " + printer.getName());
                         // e.printStackTrace();
                     }
+                }
+
+                private void getCounters(PrinterController printerController, Printer printer)
+                        throws ConnectException, IOException {
+                    Counter counter = printerController.getPrinterCounter(printer);
+                    printer.setCounter(counter);
+                    System.out.println("\n" + printer);
+                }
+
+                private void getStatus(PrinterController printerController, Printer printer){
+                    
                 }
             }.start();
         });
