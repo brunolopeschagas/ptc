@@ -5,6 +5,7 @@ import java.net.ConnectException;
 import java.util.List;
 
 import br.com.blsoft.contador.Counter;
+import br.com.blsoft.estadoEquipamento.PrinterState;
 import br.com.blsoft.impressora.Printer;
 import br.com.blsoft.impressora.PrinterController;
 import br.com.blsoft.impressora.PrinterRepositoryTxt;
@@ -19,7 +20,11 @@ public class App {
                 public void run() {
                     try {
                         System.out.println("CONECTANDO À " + printer.getName() + "...");
-                        getCounters(printerController, printer);
+                        Counter counter = getCounters(printerController, printer);
+                        printer.setCounter(counter);
+                        PrinterState printerState = getStatus(printerController, printer);
+                        printer.setPrinterState(printerState);
+                        System.out.println(printer);
                     } catch (ConnectException e) {
                         System.out.println("NAO FOI POSSÍVEL CONECTAR A IMPRESSORA " + printer.getName());
                         // e.printStackTrace();
@@ -29,15 +34,15 @@ public class App {
                     }
                 }
 
-                private void getCounters(PrinterController printerController, Printer printer)
+                private Counter getCounters(PrinterController printerController, Printer printer)
                         throws ConnectException, IOException {
                     Counter counter = printerController.getPrinterCounter(printer);
-                    printer.setCounter(counter);
-                    System.out.println("\n" + printer);
+                    return counter;
                 }
 
-                private void getStatus(PrinterController printerController, Printer printer){
-                    
+                private PrinterState getStatus(PrinterController printerController, Printer printer) throws ConnectException, IOException{
+                    PrinterState printerState = printerController.getPrinterStatus(printer);
+                    return printerState;
                 }
             }.start();
         });

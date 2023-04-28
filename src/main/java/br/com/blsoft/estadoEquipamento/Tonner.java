@@ -27,4 +27,15 @@ public class Tonner {
         return this.isEmptyOrNear;
     }
 
+    @Override
+    public String toString() {
+        return "{" +
+            " color='" + getColor() + "'" +
+            ", statusPercentage='" + getStatusPercentage() + "'" +
+            ", isEmptyOrNear='" + isIsEmptyOrNear() + "'" +
+            "}";
+    }
+
+
+
 }

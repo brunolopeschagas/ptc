@@ -9,6 +9,10 @@ import br.com.blsoft.TxtReadWrite;
 import br.com.blsoft.contador.Counter;
 import br.com.blsoft.contador.CounterParser;
 import br.com.blsoft.contador.CounterParserFactory;
+import br.com.blsoft.estadoEquipamento.PrinterState;
+import br.com.blsoft.estadoEquipamento.PrinterStateParser;
+import br.com.blsoft.estadoEquipamento.PrinterStateParserFactory;
+import br.com.blsoft.estadoEquipamento.RicohIm430PrinterStateParser;
 
 public class PrinterRepositoryTxt implements PrinterRepository {
 
@@ -26,7 +30,8 @@ public class PrinterRepositoryTxt implements PrinterRepository {
 
     private Printer printerFromTxtLine(String line) {
         String[] lineSplit = line.split(",");
-        Printer printer = new Printer(lineSplit[0], lineSplit[1], lineSplit[2], CounterParserFactory.getCounterParser(lineSplit[2]));
+        Printer printer = new Printer(lineSplit[0], lineSplit[1], lineSplit[2],
+                CounterParserFactory.getCounterParser(lineSplit[2]), PrinterStateParserFactory.getStateParser(lineSplit[2]));
         return printer;
     }
 
@@ -36,6 +41,14 @@ public class PrinterRepositoryTxt implements PrinterRepository {
         Counter contador;
         contador = counterParser.getTotalCounters(url);
         return contador;
+    }
+
+    @Override
+    public PrinterState getPrinterState(String ip, PrinterStateParser printerStateParser)
+            throws ConnectException, IOException {
+        String url = printerStateParser.getUrl(false, ip);
+        PrinterState printerState = printerStateParser.getPrinterState(url);
+        return printerState;
     }
 
 }

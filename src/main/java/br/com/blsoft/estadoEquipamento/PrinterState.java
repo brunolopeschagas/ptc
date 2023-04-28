@@ -22,4 +22,12 @@ public class PrinterState {
         return this.tonners;
     }
 
+
+    @Override
+    public String toString() {
+        return "{" +
+            " tonners='" + getTonners() + "'" +
+            "}";
+    }
+
 }

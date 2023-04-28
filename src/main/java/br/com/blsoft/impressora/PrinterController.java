@@ -6,6 +6,7 @@ import java.util.List;
 
 import br.com.blsoft.contador.Counter;
 import br.com.blsoft.contador.CounterParser;
+import br.com.blsoft.estadoEquipamento.PrinterState;
 import br.com.blsoft.estadoEquipamento.PrinterStateParser;
 
 public class PrinterController {
@@ -26,10 +27,10 @@ public class PrinterController {
         return this.printerRepository.getPrinterCounter(printerIp, printerCounterParser);
     }
 
-    public Counter getPrinterStatus(Printer printer) throws ConnectException, IOException {
+    public PrinterState getPrinterStatus(Printer printer) throws ConnectException, IOException {
         String printerIp = printer.getIp();
         PrinterStateParser printerStateParser = printer.getStateParser();
-        return this.printerRepository.getPrinter(printerIp, printerStateParser);
+        return this.printerRepository.getPrinterState(printerIp, printerStateParser);
     }
 
 }
