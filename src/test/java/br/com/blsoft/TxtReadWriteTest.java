@@ -6,6 +6,8 @@ import java.util.List;
 
 import org.junit.Test;
 
+import br.com.blsoft.util.TxtReadWrite;
+
 public class TxtReadWriteTest {
     @Test
     public void deveLerUmaLinhaDoArquivo(){

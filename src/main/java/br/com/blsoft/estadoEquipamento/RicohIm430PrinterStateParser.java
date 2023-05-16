@@ -22,9 +22,10 @@ public class RicohIm430PrinterStateParser implements PrinterStateParser {
             // If alt is empty or null, add one to counter
             if (el.attr("alt").equals(SEARCH_TEXT)) {
                 tonner = new Tonner("Preto", 0, false);
-                printerState.addTonner(tonner);
+                break;
             }
         }
+        printerState.addTonner(tonner);
         return printerState;
     }
 

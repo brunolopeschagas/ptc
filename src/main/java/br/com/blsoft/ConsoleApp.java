@@ -24,12 +24,18 @@ public class ConsoleApp {
                         printer.setCounter(counter);
                         PrinterState printerState = getStatus(printerController, printer);
                         printer.setPrinterState(printerState);
+                        System.out.println("\n-------------------------------------------------------------");
                         System.out.println(printer);
+                        printerState.getTonners().forEach(toner -> {
+                            if(toner.getIsEmptyOrNear()){
+                                System.out.println("\n este tonner " + toner.getColor() + " está quase vazio"); ;
+                            }
+                        });
                     } catch (ConnectException e) {
-                        System.out.println("NAO FOI POSSÍVEL CONECTAR A IMPRESSORA " + printer.getName());
+                        System.out.println("\n\nNAO FOI POSSÍVEL CONECTAR A IMPRESSORA " + printer.getName());
                         // e.printStackTrace();
                     } catch (IOException e) {
-                        System.out.println("ERRRO AO RECUPERAR OS CONTADORES DA IMPRESSORA " + printer.getName());
+                        System.out.println("\n\nERRRO AO RECUPERAR OS CONTADORES DA IMPRESSORA " + printer.getName());
                         // e.printStackTrace();
                     }
                 }

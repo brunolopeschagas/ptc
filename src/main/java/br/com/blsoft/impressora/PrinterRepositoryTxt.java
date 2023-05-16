@@ -5,7 +5,6 @@ import java.net.ConnectException;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.blsoft.TxtReadWrite;
 import br.com.blsoft.contador.Counter;
 import br.com.blsoft.contador.CounterParser;
 import br.com.blsoft.contador.CounterParserFactory;
@@ -13,6 +12,7 @@ import br.com.blsoft.estadoEquipamento.PrinterState;
 import br.com.blsoft.estadoEquipamento.PrinterStateParser;
 import br.com.blsoft.estadoEquipamento.PrinterStateParserFactory;
 import br.com.blsoft.estadoEquipamento.RicohIm430PrinterStateParser;
+import br.com.blsoft.util.TxtReadWrite;
 
 public class PrinterRepositoryTxt implements PrinterRepository {
 

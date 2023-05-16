@@ -1,4 +1,4 @@
-package br.com.blsoft;
+package br.com.blsoft.util;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
