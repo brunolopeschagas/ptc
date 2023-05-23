@@ -69,11 +69,11 @@ public class Printer {
 
     @Override
     public String toString() {
-        return "IMPRESSORA " +
-                " name='" + getName() + "'" +
-                ", ip='" + getIp() + "'" +
-                ", contador='" + getContador().toString() + "'" +
-                ", estado ='" + getPrinterState().toString() + "'" +
-                "}";
+        return "\nIMPRESSORA " +
+                "" + getName() + "" +
+                "\nIP ='" + getIp() + "'" +
+                "\nContador ='" + getContador().toString() + "'" +
+                "\n" + getPrinterState().toString() +
+                "";
     }
 }

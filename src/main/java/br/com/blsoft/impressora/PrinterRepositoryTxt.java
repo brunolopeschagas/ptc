@@ -11,13 +11,12 @@ import br.com.blsoft.contador.CounterParserFactory;
 import br.com.blsoft.estadoEquipamento.PrinterState;
 import br.com.blsoft.estadoEquipamento.PrinterStateParser;
 import br.com.blsoft.estadoEquipamento.PrinterStateParserFactory;
-import br.com.blsoft.estadoEquipamento.RicohIm430PrinterStateParser;
 import br.com.blsoft.util.TxtReadWrite;
 
 public class PrinterRepositoryTxt implements PrinterRepository {
 
     @Override
-    public List<Printer> getPrinters() {
+    public List<Printer> getPrinters() throws IOException {
         TxtReadWrite txtReadWrite = new TxtReadWrite("impressoras.txt");
         List<Printer> printers = new ArrayList<Printer>();
         List<String> fileLines = txtReadWrite.readFile();

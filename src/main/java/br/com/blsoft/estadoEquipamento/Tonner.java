@@ -29,13 +29,9 @@ public class Tonner {
 
     @Override
     public String toString() {
-        return "{" +
-            " color='" + getColor() + "'" +
-            ", statusPercentage='" + getStatusPercentage() + "'" +
-            ", isEmptyOrNear='" + isIsEmptyOrNear() + "'" +
-            "}";
+        return " Cor ='" + getColor() + "'" +
+            ", Quase vazio ='" + (isIsEmptyOrNear() ==true ? "SIM!" : "Não'") +
+            "";
     }
-
-
 
 }

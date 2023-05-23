@@ -25,9 +25,7 @@ public class PrinterState {
 
     @Override
     public String toString() {
-        return "{" +
-            " tonners='" + getTonners() + "'" +
-            "}";
+        return " Toners ='" + getTonners();
     }
 
 }

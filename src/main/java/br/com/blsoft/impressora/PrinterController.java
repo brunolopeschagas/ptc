@@ -17,7 +17,7 @@ public class PrinterController {
         this.printerRepository = printerRepository;
     }
 
-    public List<Printer> getPrinters() {
+    public List<Printer> getPrinters() throws IOException {
         return this.printerRepository.getPrinters();
     }
 

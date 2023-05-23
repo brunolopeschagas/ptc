@@ -64,7 +64,7 @@ public class Counter {
 
     @Override
     public String toString() {
-        return "Contador{" + "contTotal=" + contTotal + ", contCopiadora=" + contCopiadora + ", contImpressora=" + contImpressora + ", dataRegistro=" + dataRegistro + '}';
+        return "Total=" + contTotal + ", Copiadora=" + contCopiadora + ", Impressora=" + contImpressora;
     }
     
 }
