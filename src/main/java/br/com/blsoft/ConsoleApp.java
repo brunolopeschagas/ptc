@@ -11,6 +11,10 @@ import br.com.blsoft.impressora.PrinterController;
 import br.com.blsoft.impressora.PrinterRepositoryTxt;
 
 public class ConsoleApp {
+
+    final String LANGUAGE_PRIMARY = "pt";
+    final String LANGUAGE_SECONDARY = "br";
+
     public ConsoleApp() {
         PrinterController printerController = new PrinterController(new PrinterRepositoryTxt());
         List<Printer> printers;
@@ -46,7 +50,11 @@ public class ConsoleApp {
 
                     private Counter getCounters(PrinterController printerController, Printer printer)
                             throws ConnectException, IOException {
-                        Counter counter = printerController.getPrinterCounter(printer);
+                        Counter counter = printerController.getPrinterCounter(printer, LANGUAGE_PRIMARY);
+                        if(!counter.isValid()){
+                            counter = printerController.getPrinterCounter(printer, LANGUAGE_SECONDARY);
+                        }
+                        
                         return counter;
                     }
 

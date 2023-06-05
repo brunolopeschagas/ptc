@@ -35,8 +35,8 @@ public class PrinterRepositoryTxt implements PrinterRepository {
     }
 
     @Override
-    public Counter getPrinterCounter(String ip, CounterParser counterParser) throws ConnectException, IOException {
-        String url = counterParser.getUrl(false, ip);
+    public Counter getPrinterCounter(String ip, CounterParser counterParser, String language) throws ConnectException, IOException {
+        String url = counterParser.getUrl(false, ip, language);
         Counter contador;
         contador = counterParser.getTotalCounters(url);
         return contador;

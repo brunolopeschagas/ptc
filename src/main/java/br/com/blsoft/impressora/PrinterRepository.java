@@ -11,6 +11,6 @@ import br.com.blsoft.estadoEquipamento.PrinterStateParser;
 
 public interface PrinterRepository {
     public List<Printer> getPrinters() throws IOException;
-    public Counter getPrinterCounter(String ip, CounterParser counterParser) throws ConnectException, IOException;
+    public Counter getPrinterCounter(String ip, CounterParser counterParser, String language) throws ConnectException, IOException;
     public PrinterState getPrinterState(String ip, PrinterStateParser printerStateParser) throws ConnectException, IOException;
 }

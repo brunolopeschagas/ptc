@@ -14,5 +14,5 @@ import java.net.ConnectException;
  */
 public interface CounterParser {
     public Counter getTotalCounters(String urlFormatada) throws IOException, ConnectException ;
-    public String getUrl(Boolean httpSecurity,  String printerIp);
+    public String getUrl(Boolean httpSecurity,  String printerIp, String language);
 }

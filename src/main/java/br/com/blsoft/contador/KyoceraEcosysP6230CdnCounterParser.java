@@ -19,7 +19,7 @@ public class KyoceraEcosysP6230CdnCounterParser implements CounterParser {
     }
 
     @Override
-    public String getUrl(Boolean httpSecurity, String printerIp) {
+    public String getUrl(Boolean httpSecurity, String printerIp, String language) {
         String httpSecurityText = "http://";
         if (httpSecurity) {
             httpSecurityText = "https://";

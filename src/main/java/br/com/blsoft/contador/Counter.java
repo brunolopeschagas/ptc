@@ -26,6 +26,13 @@ public class Counter {
         this.contImpressora = contImpressora;
         this.dataRegistro = dataRegistro;
     }
+
+    public boolean isValid(){
+        if(this.contTotal > 0){
+            return true;
+        }
+        return false;
+    }
     
     public LocalDate getDataRegistro() {
         if(null == dataRegistro){

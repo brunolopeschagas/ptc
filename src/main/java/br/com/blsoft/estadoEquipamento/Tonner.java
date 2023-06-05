@@ -29,8 +29,8 @@ public class Tonner {
 
     @Override
     public String toString() {
-        return " Cor ='" + getColor() + "'" +
-            ", Quase vazio ='" + (isIsEmptyOrNear() ==true ? "SIM!" : "Não'") +
+        return " Cor=" + getColor() + 
+            ", Quase vazio=" + (isIsEmptyOrNear() ==true ? "SIM" : "Não") +
             "";
     }
 
