@@ -5,6 +5,8 @@ public class PrinterStateParserFactory {
         switch (printerModel) {
             case "im430":
                 return new RicohIm430PrinterStateParser();
+            case "p6230cdn":
+                return new RicohIm430PrinterStateParser();
             default:
                 return new RicohIm430PrinterStateParser();
         }

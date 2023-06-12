@@ -11,6 +11,9 @@ import java.net.ConnectException;
  * @author bruno.chagas
  */
 public class KyoceraEcosysP6230CdnCounterParser implements CounterParser {
+    
+    private final String URL_IM430_PREFIX = "/web/guest/";
+    private final String URL_IM430 = "/websys/status/getUnificationCounter.cgi";
 
     @Override
     public Counter getTotalCounters(String pUrl) throws IOException, ConnectException {
@@ -24,7 +27,7 @@ public class KyoceraEcosysP6230CdnCounterParser implements CounterParser {
         if (httpSecurity) {
             httpSecurityText = "https://";
         }
-        return httpSecurityText + printerIp; // To change body of generated methods, choose Tools |
+        return httpSecurityText + printerIp + URL_IM430_PREFIX + language + URL_IM430; // To change body of generated methods, choose Tools |
                                                          // Templates.
     }
 
