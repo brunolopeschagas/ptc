@@ -30,7 +30,7 @@ public class PrinterRepositoryTxt implements PrinterRepository {
     private Printer printerFromTxtLine(String line) {
         String[] lineSplit = line.split(",");
         Printer printer = new Printer(lineSplit[0], lineSplit[1], lineSplit[2],
-                CounterParserFactory.getCounterParser(lineSplit[2]), PrinterStateParserFactory.getStateParser(lineSplit[2]));
+                CounterParserFactory.getCounterParser(lineSplit[2]), PrinterStateParserFactory.getStateParser(lineSplit[2]), lineSplit[3]);
         return printer;
     }
 
@@ -43,9 +43,9 @@ public class PrinterRepositoryTxt implements PrinterRepository {
     }
 
     @Override
-    public PrinterState getPrinterState(String ip, PrinterStateParser printerStateParser)
+    public PrinterState getPrinterState(String ip, PrinterStateParser printerStateParser, String language)
             throws ConnectException, IOException {
-        String url = printerStateParser.getUrl(false, ip);
+        String url = printerStateParser.getUrl(false, ip, language);
         PrinterState printerState = printerStateParser.getPrinterState(url);
         return printerState;
     }

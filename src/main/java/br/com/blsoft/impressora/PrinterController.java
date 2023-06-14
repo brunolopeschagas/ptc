@@ -27,10 +27,10 @@ public class PrinterController {
         return this.printerRepository.getPrinterCounter(printerIp, printerCounterParser, language);
     }
 
-    public PrinterState getPrinterStatus(Printer printer) throws ConnectException, IOException {
+    public PrinterState getPrinterStatus(Printer printer, String language) throws ConnectException, IOException {
         String printerIp = printer.getIp();
         PrinterStateParser printerStateParser = printer.getStateParser();
-        return this.printerRepository.getPrinterState(printerIp, printerStateParser);
+        return this.printerRepository.getPrinterState(printerIp, printerStateParser, language);
     }
 
 }

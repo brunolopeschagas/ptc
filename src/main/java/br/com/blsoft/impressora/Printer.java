@@ -11,6 +11,7 @@ public class Printer {
     private String model;
     private Counter contador;
     private PrinterState printerState;
+    private String language;
  
 
     private CounterParser counterParser;
@@ -23,12 +24,13 @@ public class Printer {
         this.counterParser = counterParser;
     }
 
-    public Printer(String name, String ip, String model, CounterParser counterParser, PrinterStateParser printerStateParser) {
+    public Printer(String name, String ip, String model, CounterParser counterParser, PrinterStateParser printerStateParser, String language) {
         this.name = name;
         this.ip = ip;
         this.model = model;
         this.counterParser = counterParser;
         this.printerStateParser = printerStateParser;
+        this.language = language;
     }
 
     public String getName() {
@@ -65,6 +67,10 @@ public class Printer {
 
     public void setPrinterState(PrinterState printerState) {
         this.printerState = printerState;
+    }
+
+    public String getLanguage() {
+        return this.language;
     }
 
     @Override

@@ -60,7 +60,7 @@ public class ConsoleApp {
 
                     private PrinterState getStatus(PrinterController printerController, Printer printer)
                             throws ConnectException, IOException {
-                        PrinterState printerState = printerController.getPrinterStatus(printer);
+                        PrinterState printerState = printerController.getPrinterStatus(printer, printer.getLanguage());
                         return printerState;
                     }
                 }.start();
