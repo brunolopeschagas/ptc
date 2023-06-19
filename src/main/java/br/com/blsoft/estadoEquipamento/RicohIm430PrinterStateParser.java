@@ -11,24 +11,23 @@ import org.jsoup.select.Elements;
 public class RicohIm430PrinterStateParser implements PrinterStateParser {
     private final String URL_IM430_PREFIX = "/web/guest/";
     private final String URL_IM430 = "/websys/webArch/getStatus.cgi";
-    private final String[] STATUS_TONER = { "Cartucho quase vazio", "Cartucho vazio" };
+    private final String STATUS_TONER_EMPTY = "vazio";
+        private final String[] STATUS_TONER_SEARCH = { "Cartucho quase vazio", "Cartucho vazio" };
+
 
     @Override
     public PrinterState getPrinterState(String url) throws IOException, ConnectException {
         PrinterState printerState = new PrinterState();
         Document doc = Jsoup.connect(url).get();
-        Elements elements = doc.getElementsMatchingOwnText("vazio");
+        Tonner tonner = new Tonner("Preto", 0, false);
+        Elements elements = doc.getElementsContainingText(STATUS_TONER_EMPTY);
         for (Element element : elements) {
-            if (element.attr("alt").equals(STATUS_TONER[0])) {
-                Tonner tonner = new Tonner("Preto", 0, false);
-                printerState.addTonner(tonner);
-                break;
-            }else{
-                Tonner tonner = new Tonner("Preto", 0, false);
-                printerState.addTonner(tonner);
+            if (element.ownText().equals(STATUS_TONER_SEARCH[0]) || element.ownText().equals(STATUS_TONER_SEARCH[1])) {
+                tonner = new Tonner("Preto", 0, true);
                 break;
             }
         }
+        printerState.addTonner(tonner);
         return printerState;
     }
 
@@ -39,8 +38,6 @@ public class RicohIm430PrinterStateParser implements PrinterStateParser {
             httpSecurityText = "https://";
         }
         return httpSecurityText + printerIp + URL_IM430_PREFIX + language + URL_IM430; // To change body of generated
-                                                                                       // methods, choose Tools |
-        // Templates.
     }
 
 }

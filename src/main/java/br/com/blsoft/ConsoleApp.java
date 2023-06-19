@@ -50,11 +50,7 @@ public class ConsoleApp {
 
                     private Counter getCounters(PrinterController printerController, Printer printer)
                             throws ConnectException, IOException {
-                        Counter counter = printerController.getPrinterCounter(printer, LANGUAGE_PRIMARY);
-                        if(!counter.isValid()){
-                            counter = printerController.getPrinterCounter(printer, LANGUAGE_SECONDARY);
-                        }
-                        
+                        Counter counter = printerController.getPrinterCounter(printer, printer.getLanguage());
                         return counter;
                     }
 
