@@ -6,7 +6,7 @@ public class CounterParserFactory {
             case "im430":
                 return new RicohIM430CounterParser();
             default:
-                return new RicohIM430CounterParser();
+                return new KyoceraEcosysP6230CdnCounterParser();
         }
     }
 }

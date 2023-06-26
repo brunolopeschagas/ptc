@@ -12,9 +12,6 @@ import br.com.blsoft.impressora.PrinterRepositoryTxt;
 
 public class ConsoleApp {
 
-    final String LANGUAGE_PRIMARY = "pt";
-    final String LANGUAGE_SECONDARY = "br";
-
     public ConsoleApp() {
         PrinterController printerController = new PrinterController(new PrinterRepositoryTxt());
         List<Printer> printers;
@@ -43,7 +40,8 @@ public class ConsoleApp {
                             // e.printStackTrace();
                         } catch (IOException e) {
                             System.out
-                                    .println("\n\nERRRO AO RECUPERAR OS CONTADORES DA IMPRESSORA " + printer.getName());
+                                    .println("\n\nERRRO AO RECUPERAR OS CONTADORES DA IMPRESSORA " + printer.getName() + " - ");
+                                    e.printStackTrace();
                             // e.printStackTrace();
                         }
                     }

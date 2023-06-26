@@ -6,9 +6,9 @@ public class PrinterStateParserFactory {
             case "im430":
                 return new RicohIm430PrinterStateParser();
             case "p6230cdn":
-                return new RicohIm430PrinterStateParser();
+                return new KyoceraP6230cdnPrinterStateParser();
             default:
-                return new RicohIm430PrinterStateParser();
+                return new KyoceraP6230cdnPrinterStateParser();
         }
     }
 }

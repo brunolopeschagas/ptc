@@ -15,9 +15,11 @@ import br.com.blsoft.util.TxtReadWrite;
 
 public class PrinterRepositoryTxt implements PrinterRepository {
 
+     final static String FILE_NAME = "impressoras.txt";
+
     @Override
     public List<Printer> getPrinters() throws IOException {
-        TxtReadWrite txtReadWrite = new TxtReadWrite("impressoras.txt");
+        TxtReadWrite txtReadWrite = new TxtReadWrite(FILE_NAME);
         List<Printer> printers = new ArrayList<Printer>();
         List<String> fileLines = txtReadWrite.readFile();
         fileLines.forEach(line -> {
